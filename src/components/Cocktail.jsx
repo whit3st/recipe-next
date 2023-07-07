@@ -5,6 +5,7 @@ import Image from "next/image";
 import Button from "./Button";
 import Input from "./Input";
 import Title from "./Title";
+import Error from "./Error";
 import IngredientsArray from "./IngredientsArray";
 import Instructions from "./Instructions";
 export default function Cocktail() {
@@ -18,22 +19,16 @@ export default function Cocktail() {
             setCocktail("");
             setLoading(true);
     
-            // HANDLE IMAGE
-            const imagePromise = imageData(input);
-    
             // HANDLE RECIPE
             const cocktailPromise = cocktailData(input);
     
             // WAIT FOR BOTH PROMISES TO RESOLVE
-            const promises = [imagePromise, cocktailPromise];
+            const promises = [cocktailPromise];
             const results = await Promise.all(promises);
     
             // SET IMAGE AND COCKTAIL
-            setImage(results[0].results[0].urls.raw + '');
-            setCocktail(results[1]);
-    
+            setCocktail(results[0]);
             setLoading(false);
-            console.log();
         } else {
             setLoading(false);
             setError(true);
@@ -68,7 +63,7 @@ export default function Cocktail() {
                     Please type a meal
                 </h1>
             )}
-            {cocktail && (
+            {cocktail.length > 0 && (
                 <div className="flex flex-col h-max sm:flex-row justify-between items-center border border-[#091C1E] bg-white bg-opacity-70 max-w-[700px] w-full p-5 gap-5 rounded-md">
                     {/* <Image
                         src={image}
@@ -80,11 +75,12 @@ export default function Cocktail() {
                     <div className="flex flex-col h-full justify-between flex-1">
                     <Title title={cocktail[0].name.toUpperCase()} />
                     <IngredientsArray ingredients={cocktail[0].ingredients} />
-                    <Instructions instractions={cocktail[0].instractions} />
+                    <Instructions instractions={cocktail[0].instructions} />
                     </div>
                     
                 </div>
             )}
+            {cocktail && cocktail.length <= 0 &&  <Error />}
         </div>
     );
 }
