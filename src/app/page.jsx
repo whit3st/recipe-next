@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Recipe from "@/components/Recipe";
 import Button from "@/components/Button";
 import Cocktail from "@/components/Cocktail";
+import Logo from "@/components/Logo";
 export default function Home() {
     const [recipe, setRecipe] = useState(true);
     const activeStyle = {
@@ -12,10 +14,15 @@ export default function Home() {
       };
 
     return (
-        <main className="flex flex-col items-center gap-10 max-w-[1000xp] min-h-[100svh]">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wide text-center">
-                Welcome to the Eaters!
+        <main className="flex flex-col items-center justify-center gap-10 max-w-[1000px] w-full min-h-[100svh]">
+            <Link className="flex items-center gap-5" href={'/'}><Image src={'/logo.svg'} width={100} height={100} alt='logo'/><Logo title={'The Eaters'}/> </Link>
+            
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-center">
+                Welcome!
             </h1>
+            <p className="font-semibold tracking-wider text-lg text-center">
+                Let&apos;s find the recipe of your {recipe ? 'dish!' : 'cocktail!'}
+            </p>
             <div className="flex justify-between w-full max-w-[395px]">
                 <Button onClick={() => setRecipe(true)} name="Recipe" style={recipe && activeStyle}/>
                 <Button onClick={() => setRecipe(false)} name="Cocktail" style={!recipe && activeStyle}/>

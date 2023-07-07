@@ -1,7 +1,7 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Expletus_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const expletus = Expletus_Sans({ subsets: ["latin"] });
 
 export const metadata = {
     title: "The Eaters",
@@ -33,8 +33,7 @@ export default function RootLayout({ children }) {
             </head>
             <body
                 className={
-                    inter.className +
-                    "flex flex-col items-center justify-center pt-10 px-3 bg-bg"
+                  `${expletus.className} flex flex-col items-center justify-center pt-10 px-3 bg-bg tracking-wide`
                 }
             >
                 {children}
