@@ -9,5 +9,5 @@ export default function Error() {
         }, 3000);
     }, []);
 
-    return error ? <h1 className="text-lg text-center font-semibold">Could&apos;t find the recipe :(</h1>: "";
+    return error ? <h1 className="text-lg text-center font-semibold">Could&apos;t find the recipe :(</h1> : "";
 }

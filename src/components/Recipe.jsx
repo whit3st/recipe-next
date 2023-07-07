@@ -5,6 +5,7 @@ import { imageData } from "@/apiRequests/imageData";
 import Button from "./Button";
 import Input from "./Input";
 import Title from "./Title";
+import Error from "./Error";
 import IngredientsString from "./IngredientsString";
 import Servings from "./Servings";
 import Instructions from "./Instructions";
@@ -19,9 +20,6 @@ export default function Recipe() {
         if (input.length > 0) {
             setRecipe("");
             setLoading(true);
-            // HANDLE IMAGE
-            const image = await imageData(input);
-            setImage(image.results[0].urls.raw + "&w=300");
             // HANDLE RECIPE
             const recipe = await recipeData(input);
             setRecipe(recipe);
@@ -72,6 +70,7 @@ export default function Recipe() {
                             <Instructions instractions={item.instractions} />
                         </div>
                     ))}
+                    {recipe && recipe.length <= 0 &&  <Error />}
             </div>
         </div>
     );
