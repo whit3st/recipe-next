@@ -17,12 +17,21 @@ export default function Cocktail() {
         if (input.length > 0) {
             setCocktail("");
             setLoading(true);
+    
             // HANDLE IMAGE
-            const image = await imageData(input);
-            setImage(image.results[0].urls.raw + '');
+            const imagePromise = imageData(input);
+    
             // HANDLE RECIPE
-            const cocktail = await cocktailData(input);
-            setCocktail(cocktail);
+            const cocktailPromise = cocktailData(input);
+    
+            // WAIT FOR BOTH PROMISES TO RESOLVE
+            const promises = [imagePromise, cocktailPromise];
+            const results = await Promise.all(promises);
+    
+            // SET IMAGE AND COCKTAIL
+            setImage(results[0].results[0].urls.raw + '');
+            setCocktail(results[1]);
+    
             setLoading(false);
             console.log();
         } else {
@@ -33,6 +42,7 @@ export default function Cocktail() {
             }, 3000);
         }
     };
+    
     return (
         <div className="flex flex-col gap-5 items-center w-full max-w-[1000px] mx-auto px-3 py-10 border-t border-[#091C1E]">
             <div className="flex flex-col gap-5 sm:gap-0 sm:flex-row justify-between items-center w-full sm:max-w-[395px]">
