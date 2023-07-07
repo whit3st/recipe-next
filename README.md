@@ -20,4 +20,5 @@ To get started with the Eaters, simply visit the website at [www.theeaters.verce
 ## Note
 
 * This is not the final version of the project and changes are expected to be made in the future.
-* I used Unsplash Image API in this project but it doesn't seem to give proper images.
+* Images may be misleading because of the Unsplash Image API in this project. It doesn't seem to give proper images everytime.
+ 
