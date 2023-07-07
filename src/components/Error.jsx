@@ -9,5 +9,5 @@ export default function Error() {
         }, 3000);
     }, []);
 
-    return error ? <Title title={"Couldn`t find the recipe :("} /> : "";
+    return error ? <h1 className="text-lg text-center font-semibold">Could&apos;t find the recipe :(</h1>: "";
 }
