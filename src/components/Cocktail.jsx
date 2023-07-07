@@ -20,14 +20,9 @@ export default function Cocktail() {
             setLoading(true);
     
             // HANDLE RECIPE
-            const cocktailPromise = cocktailData(input);
-    
-            // WAIT FOR BOTH PROMISES TO RESOLVE
-            const promises = [cocktailPromise];
-            const results = await Promise.all(promises);
-    
-            // SET IMAGE AND COCKTAIL
-            setCocktail(results[0]);
+            const cocktail = await cocktailData(input);
+            // SET COCKTAIL
+            setCocktail(cocktail);
             setLoading(false);
         } else {
             setLoading(false);
@@ -64,20 +59,14 @@ export default function Cocktail() {
                 </h1>
             )}
             {cocktail.length > 0 && (
-                <div className="flex flex-col h-max sm:flex-row justify-between items-center border border-[#091C1E] bg-white bg-opacity-70 max-w-[700px] w-full p-5 gap-5 rounded-md">
-                    {/* <Image
-                        src={image}
-                        alt="cocktail photo"
-                        width={300}
-                        height={300}
-                        className="rounded-lg"
-                    /> */}
-                    <div className="flex flex-col h-full justify-between flex-1">
-                    <Title title={cocktail[0].name.toUpperCase()} />
-                    <IngredientsArray ingredients={cocktail[0].ingredients} />
-                    <Instructions instractions={cocktail[0].instructions} />
-                    </div>
-                    
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {cocktail.map((cock, index) => (
+                      <div key={index} className="flex flex-col h-full border w-[300px] border-[#091C1E] bg-white bg-opacity-70 p-5 gap-5 rounded-md">
+                    <Title title={cock.name.toUpperCase()} />
+                    <IngredientsArray ingredients={cock.ingredients} />
+                    <Instructions instractions={cock.instructions} />
+                    </div>  
+                    ))}                    
                 </div>
             )}
             {cocktail && cocktail.length <= 0 &&  <Error />}

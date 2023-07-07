@@ -67,7 +67,7 @@ export default function Recipe() {
                             <Title title={item.title} />
                             <IngredientsString ingredients={item.ingredients} />
                             <Servings servings={item.servings} />
-                            <Instructions instractions={item.instractions} />
+                            <Instructions instractions={item.instructions} />
                         </div>
                     ))}
                     {recipe && recipe.length <= 0 &&  <Error />}
