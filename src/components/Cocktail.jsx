@@ -69,14 +69,14 @@ export default function Cocktail() {
                 </h1>
             )}
             {cocktail && (
-                <div className="flex flex-col h-[520px] sm:flex-row justify-between items-center border border-[#091C1E] bg-white bg-opacity-70 max-w-[700px] w-full p-5 gap-5 rounded-md">
-                    <Image
+                <div className="flex flex-col h-max sm:flex-row justify-between items-center border border-[#091C1E] bg-white bg-opacity-70 max-w-[700px] w-full p-5 gap-5 rounded-md">
+                    {/* <Image
                         src={image}
                         alt="cocktail photo"
                         width={300}
                         height={300}
                         className="rounded-lg"
-                    />
+                    /> */}
                     <div className="flex flex-col h-full justify-between flex-1">
                     <Title title={cocktail[0].name.toUpperCase()} />
                     <IngredientsArray ingredients={cocktail[0].ingredients} />
