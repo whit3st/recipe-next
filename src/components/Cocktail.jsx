@@ -47,6 +47,7 @@ export default function Cocktail() {
         <div className="flex flex-col gap-5 items-center w-full max-w-[1000px] mx-auto px-3 py-10 border-t border-[#091C1E]">
             <div className="flex flex-col gap-5 sm:gap-0 sm:flex-row justify-between items-center w-full sm:max-w-[395px]">
                 <Input
+                    onKeyDown={(e) => e.key === 'Enter' ? handleData() : ''}
                     placeholder={"Type a cocktail"}
                     onChange={(e) => setInput(e.target.value)}
                 />

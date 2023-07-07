@@ -16,10 +16,6 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center justify-center gap-10 max-w-[1000px] w-full min-h-[100svh]">
             <Link className="flex items-center gap-5" href={'/'}><Image src={'/logo.svg'} width={100} height={100} alt='logo'/><Logo title={'The Eaters'}/> </Link>
-            
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wide text-center">
-                Welcome!
-            </h1>
             <p className="font-semibold tracking-wider text-lg text-center">
                 Let&apos;s find the recipe of your {recipe ? 'dish!' : 'cocktail!'}
             </p>

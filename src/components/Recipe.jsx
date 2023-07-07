@@ -37,13 +37,22 @@ export default function Recipe() {
     return (
         <div className="flex flex-col gap-10 items-center w-full max-w-[1000px] py-10 border-t border-[#091C1E]">
             <div className="flex flex-col gap-5 sm:gap-0 sm:flex-row justify-between items-center w-full sm:max-w-[395px]">
-                <Input placeholder={'Type a meal'} onChange={(e) => setInput(e.target.value)} />
+                <Input
+                    placeholder={"Type a meal"}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' ? handleData() : ''}
+                />
                 <Button onClick={handleData} name="Get Recipe" />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-5">
                 {loading && (
                     <h1 className=" col-span-full mx-auto text-3xl">
-                        <Image src={'/loading-unscreen.gif'} alt="loading icon" height={185} width={185}/>
+                        <Image
+                            src={"/loading-unscreen.gif"}
+                            alt="loading icon"
+                            height={185}
+                            width={185}
+                        />
                     </h1>
                 )}
                 {error && (
