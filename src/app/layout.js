@@ -1,3 +1,5 @@
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import "./globals.css";
 import { Expletus_Sans } from "next/font/google";
 
@@ -32,11 +34,11 @@ export default function RootLayout({ children }) {
                 />
             </head>
             <body
-                className={
-                  `${expletus.className} flex flex-col items-center justify-center pt-10 px-3 bg-bg tracking-wide`
-                }
+                className={`${expletus.className} flex flex-col items-center justify-center pt-10 px-3 bg-bg tracking-wide`}
             >
+                <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     );
